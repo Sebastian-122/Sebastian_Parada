@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Formulario de Persona</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <p th:if="${error}" style="color: red;">
+    [[${error}]]
+</p>
+
+    <nav class="navbar">
+    <div class="nav-container">
+
+        <form th:action="@{/personas}" th:object="${persona}" method="post" class="form-card">
+
+
+        <!-- Texto / Logo (izquierda, centro o derecha según quieras) -->
+        <div class="logo">
+            
+        </div>
+
+        <!-- Enlaces -->
+        <div class="nav-links">
+            <a href="/">Inicio</a>
+            <a href="/personas">Usuarios</a>
+            <a href="/personas/nuevo">Regístrate</a>
+        </div>
+
+    </div>
+</nav>
+
+
+    <div class="container">
+        <h1 th:text="${persona.id == null} ? 'Nueva Persona' : 'Editar Persona'"></h1>
+
+        <form th:action="@{/personas}" th:object="${persona}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras" required />
+
+
+            <label>Apellido:</label>
+            <input type="text" th:field="*{apellido}" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras" required />
+
+
+            <label>Correo:</label>
+            <input type="text" th:field="*{correo}" />
+
+            <label>Celular:</label>
+            <input type="text" th:field="*{celular}" pattern="[0-9]+" title="Solo números" required />
+
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+/* ===============================
+   BARRA DE NAVEGACIÓN ACTUALIZADA
+   =============================== */
+
+.navbar {
+    position: relative;
+    padding: 50px;
+    width: 100%;
+    background-color: #111827;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+.logo {
+    margin-left: auto;
+}
+
+.hero {
+    height: calc(100vh - 120px); /* ocupa pantalla menos el nav */
+    background-color: #f3f4f6;   /* gris suave */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 32px;
+    color: #111827;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de botones */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* Botones */
+.btn {
+    padding: 12px 28px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #1e40af;
+}
+
+/* Botón secundario */
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #2563eb;
+    color: #2563eb;
+}
+
+.btn-outline:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between; /* logo a la izquierda, enlaces a la derecha */
+    align-items: center;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Enlaces alineados a la derecha, con espacio y efecto underline */
+.nav-links {
+    display: flex;
+    gap: 30px; /* espacio entre enlaces */
+    justify-content: flex-end; /* alineación a la derecha */
+}
+
+.nav-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 14px;
+    position: relative; /* necesario para el pseudo-elemento */
+    padding-bottom: 5px; /* espacio para el underline */
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff; /* color del underline */
+    transition: width 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* subraya todo el enlace */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .nav-links a {
+        display: block;
+        margin: 8px 0;
+    }
+}
+/* Botones pequeños en tablas */
+.btn-small {
+    padding: 6px 14px;
+    font-size: 13px;
+}
+
+/* Botón peligro */
+.btn-danger {
+    background-color: #dc2626;
+}
+
+.btn-danger:hover {
+    background-color: #991b1b;
+}
+
+/* Acciones alineadas */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+.form-card {
+    max-width: 600px;
+    margin: auto;
+}
+

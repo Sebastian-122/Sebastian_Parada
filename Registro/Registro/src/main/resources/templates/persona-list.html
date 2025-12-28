@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Personas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+
+   <nav class="navbar">
+    <div class="nav-container">
+
+        <!-- Texto / Logo (izquierda, centro o derecha según quieras) -->
+        <div class="logo">
+            
+        </div>
+
+        <!-- Enlaces -->
+        <div class="nav-links">
+            <a href="/">Inicio</a>
+            <a href="/personas">Usuarios</a>
+            <a href="/personas/nuevo">Regístrate</a>
+        </div>
+
+    </div>
+</nav>
+
+
+    <div class="container">
+        <h1>Lista de Personas</h1>
+        <p th:if="${success}" class="success-message">
+    [[${success}]]
+</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tbody>
+    <tr th:each="persona, iterStat : ${personas}">
+        <td th:text="${iterStat.index + 1}"></td>
+        <td th:text="${persona.nombre}"></td>
+        <td th:text="${persona.apellido}"></td>
+        <td>
+            <td class="actions">
+    <a th:href="@{/personas/editar/{id}(id=${persona.id})}" class="btn btn-small">
+        Editar
+    </a>
+    <a th:href="@{/personas/eliminar/{id}(id=${persona.id})}"
+       class="btn btn-small btn-danger"
+       onclick="return confirm('¿Seguro que deseas eliminar esta persona?');">
+        Eliminar
+    </a>
+</td>
+
+
+        </td>
+    </tr>
+</tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
