@@ -53,11 +53,6 @@ Incluyen:
 - Eliminación  
 - Mensajes del sistema  
 
-👉 Ejemplos:
-- [Registro de personas](Registro/screenshots/Registrando.png)  
-- [Listado de personas](Registro/screenshots/Listado.png)  
-- [Inicio del sistema](Registro/screenshots/Inicio.png)  
-- [Base de datos](Registro/screenshots/BD.png)  
 
 ---
 
