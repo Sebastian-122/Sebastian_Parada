@@ -44,7 +44,7 @@ Aplicación web desarrollada en **Java con Spring Boot**, que permite registrar,
 
 Las imágenes del funcionamiento del CRUD se encuentran en la carpeta:
 
-📁 **[screenshots](screenshots/)**
+📁 **[screenshots](Registro/screenshots)**
 
 Incluyen:
 - Registro de personas  
@@ -54,10 +54,10 @@ Incluyen:
 - Mensajes del sistema  
 
 👉 Ejemplos:
-- [Registro de personas](screenshots/Registrando.png)  
-- [Listado de personas](screenshots/Listado.png)  
-- [Inicio del sistema](screenshots/Inicio.png)  
-- [Base de datos](screenshots/BD.png)  
+- [Registro de personas](Registro/screenshots/Registrando.png)  
+- [Listado de personas](Registro/screenshots/Listado.png)  
+- [Inicio del sistema](Registro/screenshots/Inicio.png)  
+- [Base de datos](Registro/screenshots/BD.png)  
 
 ---
 
@@ -74,7 +74,7 @@ Página web estática desarrollada como práctica de **estructura HTML y estilos
 
 Las capturas de esta página web también se encuentran en la carpeta:
 
-📁 **[screenshots](screenshots/)**
+📁 **[screenshots](Pagina_Basica/screenshots)**
 
 ---
 
