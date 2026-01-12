@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h2>Usuarios del sistema</h2>
+
+<a th:href="@{/admin/usuarios/nuevo}">➕ Crear Usuario</a>
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Roles</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="u : ${usuarios}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.username}"></td>
+
+        <td>
+            <span th:each="r : ${u.roles}" th:text="${r.nombre + ' '}"></span>
+        </td>
+
+        <td>
+
+            <!-- CAMBIAR ROL -->
+            <form th:action="@{/admin/usuarios/cambiar-rol}" method="post" style="display:inline">
+                <input type="hidden" name="usuarioId" th:value="${u.id}" />
+
+                <select name="rol">
+                    <option value="ROLE_USER">User</option>
+                    <option value="ROLE_EMPLOYEE">Employee</option>
+                    <option value="ROLE_ADMIN">Admin</option>
+                </select>
+
+                <button type="submit">Cambiar</button>
+            </form>
+
+            <!-- DESACTIVAR -->
+            <form th:if="${u.enabled}"
+                  th:action="@{/admin/usuarios/desactivar}"
+                  method="post"
+                  style="display:inline">
+
+                <input type="hidden" name="usuarioId" th:value="${u.id}" />
+                <button type="submit">Desactivar</button>
+            </form>
+
+            <!-- ACTIVAR -->
+            <form th:if="${!u.enabled}"
+                  th:action="@{/admin/usuarios/activar}"
+                  method="post"
+                  style="display:inline">
+
+                <input type="hidden" name="usuarioId" th:value="${u.id}" />
+                <button type="submit">Activar</button>
+            </form>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a th:href="@{/dashboard}">← Volver al Dashboard</a>
+
+</body>
+</html>
