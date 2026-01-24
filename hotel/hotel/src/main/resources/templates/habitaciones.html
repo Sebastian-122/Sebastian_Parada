@@ -19,15 +19,22 @@
             <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
         <tr th:each="h : ${habitaciones}">
             <td th:text="${h.numero}"></td>
             <td th:text="${h.tipo}"></td>
-            <td th:text="${h.estado}"></td>
+
+            <!-- ESTADO (luego lo pintas con CSS) -->
+            <td th:text="${h.estado}"
+                th:class="'estado-' + ${h.estado}">
+            </td>
+
             <td th:text="${h.precioNoche}"></td>
 
             <td>
-                <!-- CHECK-IN: SOLO SI ESTÁ DISPONIBLE -->
+
+                <!-- CHECK-IN (DISPONIBLE) -->
                 <form th:if="${h.estado.name() == 'DISPONIBLE'}"
                       th:action="@{/checkin}"
                       method="post"
@@ -37,48 +44,52 @@
                     <button type="submit">Check-In</button>
                 </form>
 
-<td>
-    <!-- CHECK-IN -->
-    <form th:if="${h.estado.name() == 'DISPONIBLE'}"
-          th:action="@{/checkin}"
-          method="post"
-          style="display:inline">
+                <!-- CHECK-OUT (OCUPADA) -->
+                <form th:if="${h.estado.name() == 'OCUPADA'}"
+                      th:action="@{/checkout}"
+                      method="post"
+                      style="display:inline">
 
-        <input type="hidden" name="habitacionId" th:value="${h.id}">
-        <button type="submit">Check-In</button>
-    </form>
+                    <input type="hidden" name="habitacionId" th:value="${h.id}">
+                    <button type="submit">Check-Out</button>
+                </form>
 
-    <!-- CHECK-OUT -->
-    <form th:if="${h.estado.name() == 'OCUPADA'}"
-          th:action="@{/checkout}"
-          method="post"
-          style="display:inline">
+                <!-- LIMPIEZA -->
+                <form th:if="${h.estado.name() == 'LIMPIEZA'}"
+                      th:action="@{/habitaciones/limpia}"
+                      method="post"
+                      style="display:inline">
 
-        <input type="hidden" name="habitacionId" th:value="${h.id}">
-        <button type="submit">Check-Out</button>
-    </form>
+                    <input type="hidden" name="id" th:value="${h.id}">
+                    <button type="submit">Marcar Disponible</button>
+                </form>
 
-    <!-- OTROS ESTADOS -->
-    <span th:if="${h.estado.name() == 'LIMPIEZA' || h.estado.name() == 'MANTENIMIENTO'}">
-        —
-    </span>
-</td>
+                <form th:if="${h.estado.name() == 'LIMPIEZA'}"
+                      th:action="@{/habitaciones/mantenimiento}"
+                      method="post"
+                      style="display:inline">
 
+                    <input type="hidden" name="id" th:value="${h.id}">
+                    <button type="submit">Enviar a Mantenimiento</button>
+                </form>
 
+                <!-- MANTENIMIENTO -->
+                <form th:if="${h.estado.name() == 'MANTENIMIENTO'}"
+                      th:action="@{/habitaciones/reparada}"
+                      method="post"
+                      style="display:inline">
 
-                <!-- MENSAJE CUANDO NO ESTÁ DISPONIBLE -->
-                <span th:if="${h.estado.name() != 'DISPONIBLE'}">
+                    <input type="hidden" name="id" th:value="${h.id}">
+                    <button type="submit">Reparada</button>
+                </form>
+
+                <!-- CUANDO NO HAY ACCIONES -->
+                <span th:if="${h.estado.name() != 'DISPONIBLE'
+                              and h.estado.name() != 'OCUPADA'
+                              and h.estado.name() != 'LIMPIEZA'
+                              and h.estado.name() != 'MANTENIMIENTO'}">
                     —
                 </span>
-                <!-- MARCAR COMO LIMPIA -->
-<form th:if="${h.estado.name() == 'LIMPIEZA'}"
-      th:action="@{/habitaciones/limpia}"
-      method="post"
-      style="display:inline">
-
-    <input type="hidden" name="id" th:value="${h.id}">
-    <button type="submit">Marcar como limpia</button>
-</form>
 
             </td>
         </tr>
@@ -86,7 +97,7 @@
 </table>
 
 <br>
-<a href="/dashboard">← Volver</a>
+<a th:href="@{/dashboard}">← Volver</a>
 
 </body>
 </html>

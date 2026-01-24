@@ -10,18 +10,15 @@
 <h2>Iniciar Sesión</h2>
 
 <form th:action="@{/login}" method="post">
-    <div>
-        <label>Usuario</label>
-        <input type="text" name="username" required>
-    </div>
+    <label>Cédula</label>
+    <input type="text" name="username" required>
 
-    <div>
-        <label>Contraseña</label>
-        <input type="password" name="password" required>
-    </div>
+    <label>Contraseña</label>
+    <input type="password" name="password" required>
 
     <button type="submit">Entrar</button>
 </form>
+
 
 <p th:if="${param.error}">Usuario o contraseña incorrectos</p>
 <p th:if="${param.logout}">Sesión cerrada correctamente</p>

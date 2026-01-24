@@ -26,6 +26,38 @@ public class HabitacionController {
         model.addAttribute("habitaciones", habitaciones);
         return "habitaciones";
     }
+    @PostMapping("/habitaciones/mantenimiento")
+public String enviarAMantenimiento(@RequestParam Long id) {
+
+    Habitacion habitacion = habitacionRepository.findById(id)
+            .orElseThrow();
+
+    if (habitacion.getEstado() != EstadoHabitacion.LIMPIEZA) {
+        return "redirect:/habitaciones?error";
+    }
+
+    habitacion.setEstado(EstadoHabitacion.MANTENIMIENTO);
+    habitacionRepository.save(habitacion);
+
+    return "redirect:/habitaciones";
+}
+@PostMapping("/habitaciones/reparada")
+public String marcarComoReparada(@RequestParam Long id) {
+
+    Habitacion habitacion = habitacionRepository.findById(id)
+            .orElseThrow();
+
+    if (habitacion.getEstado() != EstadoHabitacion.MANTENIMIENTO) {
+        return "redirect:/habitaciones?error";
+    }
+
+    // puede volver a limpieza o directamente disponible
+    habitacion.setEstado(EstadoHabitacion.LIMPIEZA);
+    habitacionRepository.save(habitacion);
+
+    return "redirect:/habitaciones";
+}
+
     @PostMapping("/habitaciones/limpia")
 public String marcarComoLimpia(@RequestParam Long id) {
 

@@ -17,6 +17,8 @@ public class Habitacion {
     @Enumerated(EnumType.STRING)
     private EstadoHabitacion estado;
     private Double precioNoche;
+    
+    
 
     public Habitacion() {}
 

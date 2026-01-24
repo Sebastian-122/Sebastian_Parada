@@ -21,6 +21,11 @@ h1, h2 {
 h1 {
     font-size: 28px;
 }
+.estado-DISPONIBLE { color: green; font-weight: bold; }
+.estado-OCUPADA { color: red; font-weight: bold; }
+.estado-MANTENIMIENTO { color: orange; font-weight: bold; }
+.estado-LIMPIEZA { color: gray; font-weight: bold; }
+
 
 h2 {
     font-size: 24px;

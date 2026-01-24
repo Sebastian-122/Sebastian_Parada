@@ -23,12 +23,13 @@
 
     <tbody>
     <tr th:each="u : ${usuarios}">
-        <td th:text="${u.id}"></td>
-        <td th:text="${u.username}"></td>
+    <td th:text="${u.id}"></td>
+    <td th:text="${u.cedula}"></td>
 
-        <td>
-            <span th:each="r : ${u.roles}" th:text="${r.nombre + ' '}"></span>
-        </td>
+    <td>
+        <span th:each="r : ${u.roles}" th:text="${r.nombre + ' '}"></span>
+    </td>
+
 
         <td>
 
@@ -38,7 +39,10 @@
 
                 <select name="rol">
                     <option value="ROLE_USER">User</option>
-                    <option value="ROLE_EMPLOYEE">Employee</option>
+                    
+<option value="ROLE_LIMPIEZA">Limpieza</option>
+<option value="ROLE_MANTENIMIENTO">Mantenimiento</option>
+
                     <option value="ROLE_ADMIN">Admin</option>
                 </select>
 

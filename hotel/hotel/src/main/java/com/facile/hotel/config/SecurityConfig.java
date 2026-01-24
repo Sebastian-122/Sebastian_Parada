@@ -3,12 +3,14 @@ package com.facile.hotel.config;
 import com.facile.hotel.security.LoginSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableMethodSecurity
 public class SecurityConfig {
 
     @Bean
@@ -16,30 +18,44 @@ public class SecurityConfig {
 
         http
             .csrf(csrf -> csrf.disable())
+
             .authorizeHttpRequests(auth -> auth
-                // 🔓 PÁGINAS PÚBLICAS
+
+                // ====== PÚBLICO ======
                 .requestMatchers(
-                    "/", 
+                    "/",
                     "/index",
                     "/login",
+                    "/register",
                     "/style.css",
                     "/css/**",
                     "/js/**",
                     "/images/**"
                 ).permitAll()
 
-                // 🔐 ROLES
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/recepcion/**").hasRole("RECEPCION")
+                // ====== ADMIN ======
+                .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
 
-                // 🔒 TODO LO DEMÁS REQUIERE LOGIN
+                // ====== LIMPIEZA ======
+                .requestMatchers("/limpieza/**").hasAuthority("ROLE_LIMPIEZA")
+
+                // ====== MANTENIMIENTO ======
+                .requestMatchers("/mantenimiento/**").hasAuthority("ROLE_MANTENIMIENTO")
+
+                // ====== USUARIO NORMAL ======
+                .requestMatchers("/dashboard", "/dashboard/**")
+                    .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+
+                // ====== TODO LO DEMÁS ======
                 .anyRequest().authenticated()
             )
+
             .formLogin(form -> form
                 .loginPage("/login")
                 .successHandler(new LoginSuccessHandler())
                 .permitAll()
             )
+
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()

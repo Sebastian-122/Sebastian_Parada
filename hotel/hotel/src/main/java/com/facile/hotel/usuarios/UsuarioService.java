@@ -8,7 +8,7 @@ public interface UsuarioService {
 
     List<Usuario> listarUsuarios();
 
-    Usuario buscarPorUsername(String username);
+    Usuario buscarPorCedula(String cedula);
 
     void cambiarPassword(Long usuarioId, String nuevaPassword);
 

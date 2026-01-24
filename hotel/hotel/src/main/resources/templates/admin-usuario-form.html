@@ -10,17 +10,50 @@
 
 <form th:action="@{/admin/usuarios/guardar}" method="post">
 
-    <label>Usuario:</label><br>
-    <input type="text" name="username" required><br><br>
+    <label>Cédula:</label><br>
+    <input type="text"
+           name="cedula"
+           required
+           pattern="[0-9]+"
+           inputmode="numeric"
+           title="Solo números"><br><br>
+
+    <label>Nombre:</label><br>
+    <input type="text"
+           name="nombre"
+           required
+           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+           title="Solo letras"><br><br>
+
+    <label>Apellido:</label><br>
+    <input type="text"
+           name="apellido"
+           required
+           pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+"
+           title="Solo letras"><br><br>
+
+    <label>Correo:</label><br>
+    <input type="email" name="correo" required><br><br>
+
+    <label>Teléfono:</label><br>
+    <input type="text"
+           name="telefono"
+           required
+           pattern="[0-9]+"
+           title="Solo números"><br><br>
 
     <label>Contraseña:</label><br>
     <input type="password" name="password" required><br><br>
 
     <label>Rol:</label><br>
-    <select name="rol">
+    <select name="rol" required>
         <option value="ROLE_ADMIN">Administrador</option>
-        <option value="ROLE_RECEPCION">Empleado</option>
-        <option value="ROLE_USER">Usuario</option>
+        
+<option value="ROLE_USER">Usuario</option>
+<option value="ROLE_LIMPIEZA">Limpieza</option>
+<option value="ROLE_MANTENIMIENTO">Mantenimiento</option>
+
+        
     </select><br><br>
 
     <button type="submit">Guardar</button>
