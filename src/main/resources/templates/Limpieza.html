@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Limpieza</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h1>🧹 Área de Limpieza</h1>
+<p>Habitaciones asignadas para limpieza</p>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Número</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Ejemplo con Thymeleaf -->
+        <tr th:each="hab : ${habitaciones}">
+            <td th:text="${hab.id}">1</td>
+            <td th:text="${hab.numero}">101</td>
+            <td>LIMPIEZA</td>
+            <td>
+                <form th:action="@{/limpieza/disponible/{id}(id=${hab.id})}" method="post" style="display:inline;">
+                    <button type="submit">✔ Marcar Disponible</button>
+                </form>
+
+                <form th:action="@{/limpieza/mantenimiento/{id}(id=${hab.id})}" method="post" style="display:inline;">
+                    <button type="submit">🛠 Enviar a Mantenimiento</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

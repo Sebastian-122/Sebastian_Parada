@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+<h1>Bienvenido al sistema</h1>
+<p>Usuario: <strong sec:authentication="name"></strong></p>
+<div sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/admin/dashboard}">Ir al panel de administrador</a>
+</div>
+</body>
+</html>

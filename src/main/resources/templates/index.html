@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Facile | Hotel Management</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+    <h1>Bienvenido a Facile</h1>
+    <p>Sistema de gestión hotelera</p>
+
+    <div style="margin-top: 30px;">
+        <a th:href="@{/login}">
+            <button>Iniciar sesión</button>
+        </a>
+
+        <a th:href="@{/register}">
+            <button>Regístrate</button>
+        </a>
+    </div>
+
+</body>
+</html>

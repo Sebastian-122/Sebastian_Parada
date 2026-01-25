@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    
+</head>
+<body>
+
+<h1>Panel de Administración</h1>
+
+<p>Solo los administradores pueden ver esto.</p>
+
+<div sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/habitaciones}">Gestionar Habitaciones</a>
+    <br>
+    <a th:href="@{/admin/usuarios}">Gestionar Usuarios</a>
+    <br>
+    <a th:href="@{/dashboard}">Volver</a>
+</div>
+
+</body>
+</html>

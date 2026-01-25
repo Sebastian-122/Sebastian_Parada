@@ -1,0 +1,141 @@
+/* -------------------- Reset y base -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8; /* gris suave de fondo */
+    color: #333;
+    padding: 20px;
+}
+
+/* -------------------- Encabezados -------------------- */
+h1, h2 {
+    color: #1a3e5c; /* azul oscuro profesional */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 28px;
+}
+.estado-DISPONIBLE { color: green; font-weight: bold; }
+.estado-OCUPADA { color: red; font-weight: bold; }
+.estado-MANTENIMIENTO { color: orange; font-weight: bold; }
+.estado-LIMPIEZA { color: gray; font-weight: bold; }
+
+
+h2 {
+    font-size: 24px;
+}
+
+/* -------------------- Formularios -------------------- */
+form {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #1a3e5c;
+    box-shadow: 0 0 5px rgba(26,62,92,0.3);
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #1a3e5c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #16344a;
+}
+
+
+
+/* -------------------- Enlaces -------------------- */
+a {
+    color: #1a3e5c;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #16344a;
+    text-decoration: underline;
+}
+
+/* -------------------- Tablas -------------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #1a3e5c;
+    color: #fff;
+    font-weight: normal;
+}
+
+tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* -------------------- Formularios en tabla (acciones) -------------------- */
+form[style*="display:inline"] {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+select {
+    width: auto;
+    display: inline-block;
+}
+
+/* -------------------- Contenedores y márgenes -------------------- */
+body > * {
+    margin-bottom: 15px;
+}
