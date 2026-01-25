@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Inicio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    
+    <nav class="navbar">
+    <div class="nav-container">
+
+        <!-- Texto / Logo (izquierda, centro o derecha según quieras) -->
+        <div class="logo">
+            
+        </div>
+
+        <!-- Enlaces -->
+        <div class="nav-links">
+            <a href="/">Inicio</a>
+            <a href="/personas">Usuarios</a>
+            <a href="/personas/nuevo">Regístrate</a>
+        </div>
+
+    </div>
+</nav>
+
+
+    <section class="hero">
+    <h1>Bienvenido a mi página web</h1>
+
+    <div class="hero-buttons">
+        <a href="/personas" class="btn">Usuarios</a>
+        <a href="/personas/nuevo" class="btn btn-outline">Regístrate</a>
+    </div>
+</section>
+
+
+</body>
+</html>
